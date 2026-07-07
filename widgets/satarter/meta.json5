@@ -1,0 +1,35 @@
+{
+    $schema: '../../sdk/v1/schema.json',
+
+    ttl: 60,
+    sizes: ['full', 'large', 'medium', 'small'],
+
+    name: 'SATarter',
+    description: 'Live progress of a SATarter crowdfunding campaign — amount raised, % of target and supporters. / Průběh crowdfundingové kampaně na SATarteru.',
+    assets: {
+        icon: 'static/icon.svg',
+        previews: {
+            full: 'static/full.png',
+            large: 'static/large.png',
+            medium: 'static/medium.png',
+            small_left: 'static/small_left.png',
+            small_right: 'static/small_right.png',
+        },
+    },
+
+    prefs: ['theme'],
+    params: {
+        campaign: {
+            name: 'Campaign / Kampaň',
+            description: 'Campaign ID from its detail URL (…/campaigns/<ID>); a full pasted URL works too',
+            type: 'string',
+            default: 'df30d3f0-753b-4b33-86cf-c5462447787f',
+        },
+        language: {
+            name: 'Language / Jazyk',
+            description: '"cs" (čeština) or "en" (English)',
+            type: 'string',
+            default: 'cs',
+        },
+    },
+}
