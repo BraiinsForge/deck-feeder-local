@@ -1,0 +1,201 @@
+/* Widget viewport sizing - ensure consistent dimensions for screenshot rendering */
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#container {
+    --accent: #f7931a;
+
+    position: absolute;
+    z-index: 10;
+    inset: 0;
+
+    display: flex;
+    gap: 2rem;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+#main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+#head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#brand {
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+}
+
+#brand .brand-rest {
+    /* brand: velká jen SAT — zbytek necháváme v barvě, jen bez zvýraznění tučností */
+    font-weight: 600;
+}
+
+#time {
+    color: var(--text-secondary);
+}
+
+#title {
+    font-weight: 700;
+    line-height: 1.15;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+#numbers {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+#amount {
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+#pct {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#bar {
+    height: 1.25rem;
+    border-radius: 0.625rem;
+    background: var(--highlight-bg);
+    overflow: hidden;
+}
+
+#bar-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--accent);
+    width: 0;
+}
+
+.funded #bar-fill {
+    background: var(--support-success);
+}
+
+#meta {
+    color: var(--text-secondary);
+}
+
+/* Přispěvatelé (jen large a full) */
+#side {
+    display: none;
+    flex-flow: column nowrap;
+    min-width: 0;
+}
+
+#side-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 0.6rem;
+}
+
+#supporters {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.55rem;
+}
+
+#supporters li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1.25rem;
+}
+
+#supporters .who {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#supporters .amt {
+    color: var(--accent);
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+#supporters .empty {
+    color: var(--text-secondary);
+    justify-content: flex-start;
+}
+
+/*
+ * Velikosti (viewporty renderu):
+ * small 317×238 · medium 638×238 · large 638×480 · full 1280×480
+ */
+
+.size-small #container {
+    padding: 0.9rem 1rem;
+}
+.size-small #head { font-size: 1rem; }
+.size-small #time { display: none; }
+.size-small #title {
+    font-size: 1.35rem;
+    -webkit-line-clamp: 1;
+}
+.size-small #amount { font-size: 1.7rem; }
+.size-small #pct { font-size: 1.7rem; }
+.size-small #bar { height: 0.9rem; }
+.size-small #meta { font-size: 1rem; }
+
+.size-medium #head { font-size: 1.25rem; }
+.size-medium #title {
+    font-size: 1.9rem;
+    -webkit-line-clamp: 1;
+}
+.size-medium #amount { font-size: 2.6rem; }
+.size-medium #pct { font-size: 2.6rem; }
+.size-medium #meta { font-size: 1.25rem; }
+
+.size-large #container { flex-flow: column nowrap; gap: 0; }
+.size-large #head { font-size: 1.4rem; }
+.size-large #title { font-size: 2.3rem; }
+.size-large #amount { font-size: 3rem; }
+.size-large #pct { font-size: 3rem; }
+.size-large #meta { font-size: 1.4rem; }
+.size-large #main { flex: 0 0 auto; gap: 0.75rem; }
+.size-large #side { display: flex; flex: 1; margin-top: 1.1rem; }
+
+.size-full #head { font-size: 1.5rem; }
+.size-full #title { font-size: 3rem; }
+.size-full #amount { font-size: 4.2rem; }
+.size-full #pct { font-size: 4.2rem; }
+.size-full #bar { height: 1.6rem; border-radius: 0.8rem; }
+.size-full #meta { font-size: 1.5rem; }
+.size-full #side {
+    display: flex;
+    flex: 0 0 24rem;
+    border-left: 1px solid var(--border-subtle);
+    padding-left: 2rem;
+}
+.size-full #supporters li { font-size: 1.4rem; }
