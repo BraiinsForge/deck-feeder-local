@@ -1,5 +1,8 @@
 # deck-feeder-local
 
+> [!WARNING]
+> **This repository is deprecated.** Remote widgets have been superseded by WebAssembly widgets. See [bmc-main](https://github.com/BraiinsForge/bmc-main#widget-development) instead.
+
 Self-hosted widget server for remote widgets on your Deck.
 
 ## Quick Start
